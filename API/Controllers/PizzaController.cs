@@ -14,9 +14,7 @@ public class PizzaController : ControllerBase
     }
 
     [HttpGet]
-    [EnableCors(origins: "http://localhost:8080/", headers: "*", methods: "*")]
-    public ActionResult<List<Pizza>> GetAll() =>
-    PizzaService.GetAll();
+    public ActionResult<List<Pizza>> GetAll() => PizzaService.GetAll();
 
     [HttpGet("{id}")]
     public ActionResult<Pizza> Get(int id)

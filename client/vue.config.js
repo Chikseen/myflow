@@ -4,6 +4,9 @@ module.exports = defineConfig({
 });
 
 module.exports = {
+  devServer: {
+    https: true,
+  },
   css: {
     loaderOptions: {
       sass: {
