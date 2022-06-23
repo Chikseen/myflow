@@ -1,7 +1,6 @@
 using API.Models;
 using API.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Web.Http.Cors;
 
 namespace API.Controllers;
 
@@ -9,9 +8,8 @@ namespace API.Controllers;
 [Route("[controller]")]
 public class PizzaController : ControllerBase
 {
-    public PizzaController()
-    {
-    }
+    public PizzaController() { }
+
 
     [HttpGet]
     public ActionResult<List<Pizza>> GetAll() => PizzaService.GetAll();
@@ -21,7 +19,7 @@ public class PizzaController : ControllerBase
     {
         var pizza = PizzaService.Get(id);
 
-        if(pizza == null)
+        if (pizza == null)
             return NotFound();
 
         return pizza;
@@ -29,7 +27,7 @@ public class PizzaController : ControllerBase
 
     [HttpPost]
     public IActionResult Create(Pizza pizza)
-    {            
+    {
         PizzaService.Add(pizza);
         return CreatedAtAction(nameof(Create), new { id = pizza.Id }, pizza);
     }
@@ -39,13 +37,13 @@ public class PizzaController : ControllerBase
     {
         if (id != pizza.Id)
             return BadRequest();
-            
+
         var existingPizza = PizzaService.Get(id);
-        if(existingPizza is null)
+        if (existingPizza is null)
             return NotFound();
-    
-        PizzaService.Update(pizza);           
-    
+
+        PizzaService.Update(pizza);
+
         return NoContent();
     }
 
@@ -53,12 +51,12 @@ public class PizzaController : ControllerBase
     public IActionResult Delete(int id)
     {
         var pizza = PizzaService.Get(id);
-    
+
         if (pizza is null)
             return NotFound();
-        
+
         PizzaService.Delete(id);
-    
+
         return NoContent();
     }
 }
