@@ -1,13 +1,4 @@
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy =>
-                      {
-                          policy.WithOrigins("https://localhost:8080", "http://www.contoso.com");
-                      });
-});
 
 // Add services to the container.
 
@@ -18,7 +9,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -27,13 +17,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
-app.UseCors(builder =>
-    builder.WithOrigins("http://localhost:8080/")
-           .AllowAnyHeader()
-    );
+
 app.MapControllers();
 
 app.Run();
