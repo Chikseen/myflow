@@ -18,15 +18,10 @@ public class UserController : ControllerBase
         return databaseService.getAllUser();
     }
 
-    /*     [HttpPost(Name = "CreateUser")]
-        public String Post()
-        {
-            //Console.WriteLine(rawRequestBody);
-            return "Ok()";
-        } */
-    [HttpPost("cancelRequestAccess")]
-    public String test([FromBody] string name)
+    [HttpPost]
+    public IActionResult Create(User user)
     {
-        return "model";
+        Console.WriteLine(user.Name ) ;
+        return CreatedAtAction(nameof(Create), new { id = user.Name }, user);
     }
 }
