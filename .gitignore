@@ -4,6 +4,8 @@ node_modules
 
 
 # local env files
+.env.develop
+.env.production
 .env.local
 .env.*.local
 
@@ -362,3 +364,4 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+client/.env.develop
