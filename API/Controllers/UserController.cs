@@ -21,7 +21,9 @@ public class UserController : ControllerBase
     [HttpPost]
     public IActionResult Create(User user)
     {
-        Console.WriteLine(user.Name ) ;
+        Console.WriteLine("Create new UserName" + user.Name);
+        Console.WriteLine("Create new UserID" + user.Id);
+        databaseService.createNewUser(user.Name, user.Id);
         return CreatedAtAction(nameof(Create), new { id = user.Name }, user);
     }
 }

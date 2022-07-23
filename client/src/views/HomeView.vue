@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     async getPizza() {
-      console.log(await api.post("User", { Name: "hi" }));
+      console.log(await api.post("User", { Name: "test", Id: 23 }));
     },
   },
 };
